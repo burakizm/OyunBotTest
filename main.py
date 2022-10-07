@@ -37,10 +37,10 @@ def setup_logger():
 
 
 def help(update, context):
-    update.message.reply_text('Mövcud əmrlər:\n' +
-                              '/basla - Yeni oyun başladmaq\n' +
-                              '/master - Aparıcı olmaq\n' +
-                              '/rating - Qrup üzrə reytinq', reply_to_message_id=True)
+    update.message.reply_text('Komutlarım:\n' +
+                              '/basla - Yeni oyun Başlatır\n' +
+                              '/master - Anlatıcı Ol\n' +
+                              '/rating - Gruplar Arası Sıralama', reply_to_message_id=True)
 
 
 def button(update, context):
@@ -66,14 +66,14 @@ def button(update, context):
 def command_start(update, context: CallbackContext):
     if update.effective_chat.type == "private":
         
-        addme = InlineKeyboardButton(text="🧚 Qrupa əlavə edin!", url="https://t.me/wordsazebot?startgroup=a")
-        sohbet = InlineKeyboardButton(text="💬 Söhbət Qrupumuz", url="https://t.me/grand_villa")
-        oyun = InlineKeyboardButton(text="👾 Oyun Qrupumuz", url="https://t.me/grand_villa")
-        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahib", url="https://t.me/aykhan_s")
+        addme = InlineKeyboardButton(text="➕ Beni Gruba Ekle ➕", url="https://t.me/inek_oyunlar_bot?startgroup=a")
+        sohbet = InlineKeyboardButton(text="🐄 Grubumuz", url="https://t.me/inekobasiTR")
+        oyun = InlineKeyboardButton(text="🌹 Kanalımız", url="https://t.me/birtutamsevda")
+        admin = InlineKeyboardButton(text="👤 Sahip", url="https://t.me/uslanmazmurti")
 
         keyboard = [[addme],[sohbet],[oyun],[admin]]
         reply_markup = InlineKeyboardMarkup(keyboard)
-        update.message.reply_text('🇦🇿Şəxsidə oyun olmaz!', reply_to_message_id=True, reply_markup=reply_markup)
+        update.message.reply_text('Oyun Başlatamam!', reply_to_message_id=True, reply_markup=reply_markup)
     else:
         chat_id = update.message.chat.id
         user_id = update.message.from_user.id
@@ -87,7 +87,7 @@ def command_start(update, context: CallbackContext):
         game = get_or_create_game(chat_id)
         game.start()
 
-        update.message.reply_text('Söz Oyunu Başladı✨'.format(username), reply_to_message_id=True)
+        update.message.reply_text('Söz Oyunu Başlatıldı ✨'.format(username), reply_to_message_id=True)
 
         set_master(update, context)
 
